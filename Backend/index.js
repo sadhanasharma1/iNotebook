@@ -4,7 +4,7 @@ connectToMongo();
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 app.use(express.json())
 //we can write all routes here as well but it will be messy so better create sseperate file for routes and connect iit here.
