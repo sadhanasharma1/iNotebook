@@ -1,6 +1,10 @@
 const mongoose= require('mongoose')
-
+const {Schema} = mongoose; // it is important to add if u want to use any schema
 const NotesSchema = new Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'user' //User.js ka foregin key banane ke liye ye krna prega
+    },
 title:{
     type:String,
     required:true
@@ -16,8 +20,8 @@ tag:{
 },
 date:{
     type:Date,
-    required:Date.now
+    default:Date.now
 }
   });
-
-  module.exports= mongoose.model('notes',NotesSchema)
+const Note= mongoose.model('notes',NotesSchema);
+module.exports= Note;
