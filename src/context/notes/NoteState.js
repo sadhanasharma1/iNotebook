@@ -20,6 +20,51 @@ const NoteState = (props) => {
           "tag": "first note personal2",
           "date": "2024-06-02T17:50:44.433Z",
           "__v": 0
+        },
+        {
+          "_id": "665cb0f4dae3bb2548dcb1e6",
+          "user": "665c7160a176950ef2e3e445",
+          "title": "my-title2",
+          "description": "my-description2",
+          "tag": "first note personal2",
+          "date": "2024-06-02T17:50:44.433Z",
+          "__v": 0
+        },
+        {
+          "_id": "665cb0f4dae3bb2548dcb1e6",
+          "user": "665c7160a176950ef2e3e445",
+          "title": "my-title2",
+          "description": "my-description2",
+          "tag": "first note personal2",
+          "date": "2024-06-02T17:50:44.433Z",
+          "__v": 0
+        },
+        {
+          "_id": "665cb0f4dae3bb2548dcb1e6",
+          "user": "665c7160a176950ef2e3e445",
+          "title": "my-title2",
+          "description": "my-description2",
+          "tag": "first note personal2",
+          "date": "2024-06-02T17:50:44.433Z",
+          "__v": 0
+        },
+        {
+          "_id": "665cb0f4dae3bb2548dcb1e6",
+          "user": "665c7160a176950ef2e3e445",
+          "title": "my-title2",
+          "description": "my-description2",
+          "tag": "first note personal2",
+          "date": "2024-06-02T17:50:44.433Z",
+          "__v": 0
+        },
+        {
+          "_id": "665cb0f4dae3bb2548dcb1e6",
+          "user": "665c7160a176950ef2e3e445",
+          "title": "my-title2",
+          "description": "my-description2",
+          "tag": "first note personal2",
+          "date": "2024-06-02T17:50:44.433Z",
+          "__v": 0
         }
       ];
 
