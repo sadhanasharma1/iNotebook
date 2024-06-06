@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import About from './Components/About' 
+import Alert from './Components/Alert' 
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,6 +18,7 @@ function App() {
     <NoteState>
       <Router>
         <Navbar />
+        <Alert message="This is amazing react course"/>
         <div className="container">
         <Routes>
           <Route exact path="/" element={<Home/>}>

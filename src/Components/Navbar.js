@@ -6,7 +6,6 @@ export default function Navbar() {
     //like pathname, search, hash, state, key etc.. so to het the partivular oe we can write location.pathname or location.key and likewise
     let location = useLocation();
     useEffect(() => {
-      console.log(location.pathname)
     }, [location]);
     return (
         <div>
