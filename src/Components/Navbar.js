@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Link, useLocation} from "react-router-dom";
 
 export default function Navbar() {
     //using this I can extract the location detals of our router...
     //like pathname, search, hash, state, key etc.. so to het the partivular oe we can write location.pathname or location.key and likewise
     let location = useLocation();
-    useEffect(() => {
-    }, [location]);
+   
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

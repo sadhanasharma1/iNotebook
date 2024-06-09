@@ -1,10 +1,14 @@
+const express = require('express')
+var cors = require('cors')
 const connectToMongo = require('./db');
 
 connectToMongo();
 
-const express = require('express')
 const app = express()
 const port = 5000
+
+ 
+app.use(cors())
 
 app.use(express.json())
 //we can write all routes here as well but it will be messy so better create sseperate file for routes and connect iit here.
