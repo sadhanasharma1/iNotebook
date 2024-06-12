@@ -1,10 +1,10 @@
 import React,{useContext} from 'react'
 import noteContext from "../context/notes/noteContext"
 const NoteItem = (props) => {
-    const {note}=props;
+    const {note,updateNote}=props;
     const context = useContext(noteContext)
     const {deleteNote}= context;
-    const {editNote}=context;
+    // const {editNote}=context;
   return (
     <div className="col-md-3">
 
@@ -14,7 +14,7 @@ const NoteItem = (props) => {
     <div className="d-flex align-items-center">
     <h5 className="card-title">{note.title}</h5>
     <i className="fa-regular fa-pen-to-square mx-3" onClick={()=>{
-      editNote(note._id,note.title,note.description,note.tag)
+      updateNote(note)
     }}></i>
     <i className="fa-solid fa-trash mx-3" onClick={()=>{
 deleteNote(note._id)
