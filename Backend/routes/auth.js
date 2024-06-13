@@ -57,7 +57,7 @@ router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').exists()
 ], async (req, res) => {
-
+     let success=false;
     //If there is error : return thr Bad Request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -68,13 +68,16 @@ router.post('/login', [
     try {
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ error: "please try to login with correct credentials" });
+            success=false;
+            return res.status(400).json({ success,error: "please try to login with correct credentials" });
         }
         // we just pass the password emtered by the user and tge password stored in the database 
         //this fun internally comare the hash.. no need to bother
         //it return true(if matched) else false
         const passwordCompare = await bcrypt.compare(password, user.password);
-        if (!passwordCompare) { return res.status(400).json({ error: "please try to login with correct credentials" }); }
+        if (!passwordCompare) {
+            success=false;
+            return res.status(400).json({ success,error: "please try to login with correct credentials" }); }
 
         const data = {
             user: {
@@ -82,7 +85,8 @@ router.post('/login', [
             }
         }//it creates an authentication token to be sent to the valid user
         const authToken = jwt.sign(data, JWT_SECRET);
-        res.json(authToken);
+        success=true;
+        res.json({success,authToken});
     }
     catch (err) {
         console.log(err.message);

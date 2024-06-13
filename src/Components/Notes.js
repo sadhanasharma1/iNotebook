@@ -4,26 +4,28 @@ import AddNote from './AddNote';
 import noteContext from "../context/notes/noteContext"
 const Notes = () => {
   const context = useContext(noteContext)
-  const { notes, getNotes } = context;
+  const { notes, getNotes, editNote } = context;
   useEffect(() => {
     getNotes();
     // eslint-disable-next-line
   }, [])
 
   const ref = useRef(null);
-  const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
+  const refClose = useRef(null);
+  const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag: "" });
 
 
   const updateNote = (currentNote) => {
     ref.current.click();
-    setNote({etitle:currentNote.title, edescription:currentNote.description,etag:currentNote.tag});
+    setNote({id:currentNote._id,etitle:currentNote.title, edescription:currentNote.description,etag:currentNote.tag});
     
   }
 
 
-  const handleClick = (e) => {
-    console.log("updating the note.", note)
-    e.preventDefault(); // to avoid page reload
+  const handleClick = () => {
+    
+    editNote(note.id,note.etitle, note.edescription, note.etag)
+    refClose.current.click(); // this has been done for toggling type action.. if clicked then modal will be closed
    
   }
 
@@ -51,11 +53,11 @@ const Notes = () => {
               <form className="my-3">
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">Title</label>
-                  <input type="text" className="form-control" id="etitle" aria-describedby="emailHelp" name="etitle" value={note.etitle} onChange={onChange} />
+                  <input type="text" className="form-control" id="etitle" aria-describedby="emailHelp" name="etitle" value={note.etitle} minLength={5} required onChange={onChange} />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label">Description</label>
-                  <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} />
+                  <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} minLength={5} required onChange={onChange} />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="tag" className="form-label">Tag</label>
@@ -64,16 +66,20 @@ const Notes = () => {
               </form>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
+              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button disabled={note.etitle.length<5 || note.edescription.length<5 } onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
             </div>
           </div>
         </div>
-      </div>
+      </div> 
 
 
-      <div className="row my-3">
+{/* jb hamare pass else me kuch nhi nhota to hm && laga dete h */}
+      <div className="container row my-3">
         <h1>Your Notes</h1>
+        <div className="container">
+        {notes.length===0 && 'No notes to display' }
+        </div>
         {notes.map((note) => {
           return <NoteItem key={note._id} updateNote={updateNote} note={note} />;
         })}

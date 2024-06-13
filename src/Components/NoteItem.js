@@ -21,6 +21,7 @@ deleteNote(note._id)
     }}></i>
     </div>
     <p className="card-text"> {note.description}</p>
+    <p className="card-text opacity-75"> {note.tag}</p>
 
    
   </div>
