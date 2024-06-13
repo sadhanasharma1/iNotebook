@@ -9,6 +9,7 @@ const handleClick=(e)=>{
    e.preventDefault(); // to avoid page reload
 addNote(note.title,note.description,note.tag);
 setNote({title:"", description:"",tag:""});
+props.showAlert("Added successfully","success")
 }
 
 const onChange=(e)=>{
