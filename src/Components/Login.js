@@ -19,8 +19,8 @@ const response = await fetch(`${host}/api/auth/login`, {
   if (json.success){
     //save the auth token and redirect to home page
     localStorage.setItem('token',json.authToken);
+    props.showAlert("Loggedin successfully","success")
     navigate("/");
-    props.showAlert("Account created successfully","success")
   }
   else{
 props.showAlert("Invalide Credentials","danger")
@@ -33,6 +33,7 @@ props.showAlert("Invalide Credentials","danger")
 
   return (
     <div>
+      <h2 className="my-5">Login to continue to iNotebook</h2>
 <form onSubmit={handleSubmit}>
   <div className="mb-3">
     <label htmlFor="email" className="form-label">Email address</label>
